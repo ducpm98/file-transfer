@@ -29,12 +29,13 @@ def send_file():
 
     # function that help you select the file
     def select_file():
-        global filename
-        filename=filedialog.askopenfilename(initialdir=os.getcwd(),
-                                            title='Select Your File',
-                                            filetypes=(('file_type','*.txt'),('all files','*.*')))
+        return filedialog.askopenfilename(
+        initialdir=os.getcwd(),
+        title='Select Your File',
+        filetypes=(('file_type', '*.txt'), ('all files', '*.*'))
+    )
         
-    def sender():
+    def send_file_window():
         s=socket.socket()
         host = socket.gethostname()
         port=8080
@@ -64,7 +65,7 @@ def send_file():
 
     # stop here
     Button(window,text="+ select file",width=10,height=1,font='arial 14 bold',bg="#fff", fg="#000",command=select_file).place(x=120, y=150)
-    Button(window,text="SEND",width=8,height=1,font='arial 14 bold',bg='#000',fg="#fff", command=sender).place(x=260,y=150)
+    Button(window,text="SEND",width=8,height=1,font='arial 14 bold',bg='#000',fg="#fff", command=send_file_window).place(x=260,y=150)
 
     window.mainloop()
 
